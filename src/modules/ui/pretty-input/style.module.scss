@@ -1,0 +1,48 @@
+.pretty-input {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px;
+  width: 100%;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 2px solid transparent;
+  transition: border-color 0.1s;
+  background: #23272d;
+  position: relative;
+
+  &-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: column;
+    gap: 2px;
+    width: 100%;
+  }
+
+  &-label {
+    font-family: 'Roboto', sans-serif;
+    color: #9096a5;
+    font-size: 14px;
+  }
+
+  input {
+    border-radius: inherit;
+    border: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    color: inherit;
+    background: transparent;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  }
+
+  &:has(input:focus) {
+    border-color: #2a5ada;
+  }
+}

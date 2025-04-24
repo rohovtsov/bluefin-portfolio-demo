@@ -1,0 +1,78 @@
+@use '@/mixins/app';
+
+.pretty-button {
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  background: #2a5ada;
+  text-decoration: none;
+  transition: background .2s;
+  color: #fff;
+  vertical-align: -2px;
+
+  &:hover {
+    background: #2283de;
+  }
+
+  :global(.pretty-button-icon) {
+    color: #171a1e;
+  }
+
+  :global(.pretty-button-icon) {
+    display: inline-flex;
+    padding: 2px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform .2s;
+
+    &:global(.prefix) {
+      margin-left: -4px;
+    }
+
+    &:global(.postfix) {
+      margin-right: -4px;
+    }
+  }
+
+  &:hover :global(.pretty-button-icon) {
+    transform: scale(1.1);
+  }
+
+  &.variant-secondary {
+    color: #fff;
+    background: #23272d;
+
+    &:hover {
+      background: #2b2f36;
+    }
+  }
+
+  &.variant-tertiary {
+    color: #9096a5;
+    background: #23272d;
+
+    :global(.pretty-button-icon) {
+      background: #9096a5;
+    }
+
+    &:hover {
+      background: #2b2f36;
+    }
+  }
+
+  &.size-large {
+    padding: 14px 32px;
+    font-size: 18px;
+
+    @include app.media-below(app.$viewport-mobile) {
+      padding: 10px 16px;
+      font-size: 16px;
+    }
+  }
+}

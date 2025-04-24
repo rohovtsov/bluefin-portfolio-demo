@@ -1,0 +1,172 @@
+@use "@/mixins/app";
+
+.page {
+  display: flex;
+  align-items: center;
+  padding: 164px 0 64px;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+
+  > :global(.container) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-inner {
+    text-align: center;
+
+    h1 {
+      font-size: 64px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 32px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .controls-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-flow: column;
+  }
+
+  .search-form {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    max-width: 560px;
+
+    &-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &-button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+
+@keyframes screenshot-appear {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.screenshot {
+  animation: screenshot-appear .5s .25s;
+  animation-fill-mode: both;
+  display: flex;
+  padding: 16px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1024px;
+  margin-top: 100px;
+  background: #0f1315;
+  position: relative;
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(21, 25, 29, 0) 0%, #15191d 100%);
+  }
+}
+
+@include app.media-below(app.$viewport-laptop) {
+  .page {
+    padding: 128px 0 64px;
+
+    .screenshot {
+      margin-top: 80px;
+    }
+  }
+}
+
+@include app.media-below(app.$viewport-tablet) {
+  .page {
+    &-inner {
+      h1 {
+        font-size: 52px;
+      }
+    }
+  }
+}
+
+@include app.media-below(app.$viewport-mobile) {
+  .page {
+    padding: 96px 0;
+
+    &-inner {
+      h1 {
+        font-size: 42px;
+      }
+
+      p {
+        font-size: 14px;
+        max-width: 420px;
+        margin-bottom: 24px;
+      }
+    }
+
+    .screenshot {
+      display: none;
+    }
+
+    .controls-wrap {
+      flex-flow: column;
+      max-width: 320px;
+      gap: 12px;
+      margin-left: auto;
+      margin-right: auto;
+
+      a {
+        width: 100%;
+      }
+    }
+
+    .search-form {
+      flex-flow: column;
+      gap: 8px;
+
+      &-input {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
+
+      &-button {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+      }
+    }
+  }
+}

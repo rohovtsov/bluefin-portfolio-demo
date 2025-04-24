@@ -53,6 +53,7 @@
     }
   }
 
+  &.variant-transparent,
   &.variant-tertiary {
     color: #9096a5;
     background: #23272d;
@@ -63,6 +64,15 @@
 
     &:hover {
       background: #2b2f36;
+    }
+  }
+
+  &.variant-transparent {
+    background: transparent;
+    padding: 0;
+
+    &:hover {
+      background: transparent;
     }
   }
 

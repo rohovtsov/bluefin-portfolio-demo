@@ -1,0 +1,28 @@
+.add-account-item {
+  padding: 24px;
+  border-radius: 16px;
+  width: 100%;
+  border: 2px dashed #23272d;
+
+  form {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  h3 {
+    font: 700 18px 'Roboto Mono';
+    margin-bottom: 16px;
+    color: #9096a5;
+  }
+
+  &-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &-button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

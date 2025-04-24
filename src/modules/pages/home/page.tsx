@@ -24,6 +24,7 @@ export default function HomePage() {
         <div className={styles['controls-wrap']}>
           <form className={styles['search-form']} onSubmit={handleSubmit}>
             <PrettyInput
+              name="account"
               onChange={setQuery}
               value={query}
               className={styles['search-form-input']}

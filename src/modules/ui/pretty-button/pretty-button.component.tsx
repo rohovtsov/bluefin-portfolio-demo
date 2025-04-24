@@ -8,7 +8,7 @@ type Props = any & {
   children?: React.ReactNode | React.ReactNode[];
   className?: string;
   to?: string;
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'transparent';
   size?: 'small' | 'medium' | 'large';
 }
 

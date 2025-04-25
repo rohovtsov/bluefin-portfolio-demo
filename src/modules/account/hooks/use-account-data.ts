@@ -1,6 +1,7 @@
-import { useCoingeckoIdsMap, useCoingeckoTokenData } from '@/modules/account/hooks/use-coingecko.ts';
+import { useCoingeckoIdsMap } from '@/modules/account/hooks/use-coingecko.ts';
 import { useAccountBalances } from '@/modules/account/hooks/use-account-balance.ts';
 import { useMemo } from 'react';
+import { useCoingeckoTokenDataCached } from '@/modules/account/hooks/use-coingecko-cached.ts';
 
 export interface AccountTokenData {
   address: string;
@@ -20,7 +21,7 @@ export interface AccountData {
 export function useAccountData(account: string, tokenList: string[]): AccountData {
   const balances = useAccountBalances(account, tokenList);
   const { data: idsMap } = useCoingeckoIdsMap();
-  const { data: tokenData } = useCoingeckoTokenData(tokenList);
+  const { data: tokenData } = useCoingeckoTokenDataCached(tokenList);
 
   const tokens = useMemo(() => {
     return balances.map(balance => {

@@ -1,10 +1,11 @@
+@use "@/mixins/app";
+
 .account-view {
   display: flex;
   align-items: flex-start;
   flex-flow: column;
   gap: 24px;
   width: 100%;
-  max-width: 420px;
 }
 
 .account-item {
@@ -12,10 +13,18 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 16px;
-  padding: 24px;
+  padding: 22px;
+  border: 2px solid transparent;
+  transition: border-color 0.1s;
   border-radius: 16px;
   background: #23272d;
   width: 100%;
+  cursor: pointer;
+
+  &.selected {
+    border-color: #2a5ada;
+    cursor: default;
+  }
 
   h3 {
     font: 700 24px 'Roboto Mono';
@@ -60,6 +69,14 @@
     small {
       display: flex;
       color: #9096a5;
+    }
+  }
+}
+
+@include app.media-below(app.$viewport-mobile) {
+  .account-item {
+    h3 {
+      font-size: 18px;
     }
   }
 }

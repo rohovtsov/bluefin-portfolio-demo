@@ -6,10 +6,11 @@ import { useAccountPageState } from '@/modules/account/state/account-page.state.
 import { prettyAddress } from '@/modules/utils/address.ts';
 import AccountView from '@/modules/account/ui/account-view/account-view.component.tsx';
 import Icon from '@/modules/ui/icon/icon.component.tsx';
+import ChartView from '@/modules/account/ui/chart-view/chart-view.component.tsx';
 
 export default function AccountPage() {
   const { address = '' } = useParams<{ address: string }>();
-  const { accountData, addToken, removeToken } = useAccountPageState(address);
+  const { accountData, addToken, removeToken, setSelectedToken, selectedToken } = useAccountPageState(address);
 
   return <div className={cn(styles['page'], 'slide-animation')}>
     <div className="container">
@@ -19,7 +20,22 @@ export default function AccountPage() {
           Back
         </PrettyButton>
         <h1>Account <ins>{prettyAddress(accountData.account)}</ins></h1>
-        <AccountView data={accountData} addToken={addToken} removeToken={removeToken} />
+        <div className={styles['content-view']}>
+          <div className={styles['account-view']}>
+            <AccountView
+              data={accountData}
+              addToken={addToken}
+              removeToken={removeToken}
+              setSelectedToken={setSelectedToken}
+              selectedToken={selectedToken}
+            />
+          </div>
+          <div className={styles['chart-view']}>
+            <div className={styles['chart-view-inner']}>
+              <ChartView tokenAddress={selectedToken} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>;

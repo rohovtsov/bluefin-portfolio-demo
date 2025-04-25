@@ -15,7 +15,7 @@ export default function HomePage() {
   const handleSubmit = useCallback((e: FormEvent) => {
     e.preventDefault();
     if (isValidAddress(query)) {
-      navigate(`/account/${query}`);
+      navigate(`/account/${query.toLowerCase()}`);
     }
   }, [query, navigate]);
 

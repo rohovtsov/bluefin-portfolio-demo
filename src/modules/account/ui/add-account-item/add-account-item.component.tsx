@@ -15,7 +15,7 @@ export default function AddAccountItem({addToken}: Props) {
   const handleSubmit = useCallback((e: FormEvent) => {
     e.preventDefault();
     if (isValidAddress(query)) {
-      addToken(query);
+      addToken(query.toLowerCase());
       setQuery('');
     }
   }, [addToken, query]);

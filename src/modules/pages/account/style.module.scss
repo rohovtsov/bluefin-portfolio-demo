@@ -1,3 +1,5 @@
+@use "@/mixins/app";
+
 .page-inner {
   padding: 12px 0 64px;
   justify-content: center;
@@ -9,6 +11,54 @@
     ins {
       font-family: "Roboto Mono";
       text-decoration: none;
+    }
+  }
+}
+
+.content-view {
+  display: flex;
+  gap: 32px;
+}
+
+.account-view {
+  width: 420px;
+}
+
+.chart-view {
+  position: relative;
+  z-index: 0;
+  width: calc(100% - 420px - 32px);
+
+  &-inner {
+    position: sticky;
+    top: 64px;
+    z-index: 1;
+  }
+}
+
+@include app.media-below(app.$viewport-tablet) {
+  .content-view {
+    flex-flow: column-reverse;
+  }
+
+  .account-view {
+    width: 100%;
+  }
+
+  .chart-view {
+    width: 100%;
+
+    &-inner {
+      position: relative;
+      top: 0;
+    }
+  }
+}
+
+@include app.media-below(app.$viewport-mobile) {
+  .page-inner {
+    h1 {
+      font-size: 24px;
     }
   }
 }

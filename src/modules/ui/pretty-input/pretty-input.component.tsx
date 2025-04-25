@@ -6,17 +6,20 @@ import cn from 'classnames';
 type Props = any & {
   label: string;
   value: string;
+  invalid?: boolean;
   className?: string;
   onChange: (value: string) => void;
 }
 
-export default function PrettyInput({ value, className, label, onChange, ...props }: Props) {
+export default function PrettyInput({ value, className, label, invalid, onChange, ...props }: Props) {
   const handleInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   }, [onChange]);
 
   return (
-    <label className={cn(style['pretty-input'], className)}>
+    <label className={cn(style['pretty-input'], className, {
+      [style['invalid']]: invalid
+    })}>
       <div className={style['pretty-input-inner']}>
         <span className={style['pretty-input-label']}>{label}</span>
         <input

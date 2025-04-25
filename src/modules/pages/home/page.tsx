@@ -6,6 +6,7 @@ import { randomStr } from '@/modules/utils/random.ts';
 import PrettyInput from '@/modules/ui/pretty-input/pretty-input.component.tsx';
 import { FormEvent, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { isValidAddress } from '@/modules/utils/address.ts';
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -13,7 +14,9 @@ export default function HomePage() {
 
   const handleSubmit = useCallback((e: FormEvent) => {
     e.preventDefault();
-    navigate(`/account/${query}`);
+    if (isValidAddress(query)) {
+      navigate(`/account/${query}`);
+    }
   }, [query, navigate]);
 
   return <div className={cn(styles['page'], 'slide-animation')}>
@@ -29,6 +32,7 @@ export default function HomePage() {
               value={query}
               className={styles['search-form-input']}
               label={"Wallet Address"}
+              invalid={!isValidAddress(query) && !!query}
               placeholder="0x000...000"
               size="large"
             />

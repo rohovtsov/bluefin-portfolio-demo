@@ -3,18 +3,21 @@ import PrettyInput from '@/modules/ui/pretty-input/pretty-input.component.tsx';
 import PrettyButton from '@/modules/ui/pretty-button/pretty-button.component.tsx';
 import Icon from '@/modules/ui/icon/icon.component.tsx';
 import { FormEvent, useCallback, useState } from 'react';
+import { isValidAddress } from '@/modules/utils/address.ts';
 
 interface Props {
   addToken: (token: string) => void;
 }
 
-export default function AddAccountItem({ addToken }: Props) {
+export default function AddAccountItem({addToken}: Props) {
   const [query, setQuery] = useState('');
 
   const handleSubmit = useCallback((e: FormEvent) => {
     e.preventDefault();
-    addToken(query);
-    setQuery('');
+    if (isValidAddress(query)) {
+      addToken(query);
+      setQuery('');
+    }
   }, [addToken, query]);
 
   return <div className={styles['add-account-item']}>
@@ -26,6 +29,7 @@ export default function AddAccountItem({ addToken }: Props) {
         onChange={setQuery}
         value={query}
         className={styles['add-account-item-input']}
+        invalid={!isValidAddress(query) && !!query}
         label={"Token Address"}
         placeholder="0x000...000"
         size="large"

@@ -45,4 +45,8 @@
   &:has(input:focus) {
     border-color: #2a5ada;
   }
+
+  &.invalid:has(input:focus) {
+    border-color: #da2a2a;
+  }
 }

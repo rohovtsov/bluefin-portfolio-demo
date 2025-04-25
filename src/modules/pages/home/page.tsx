@@ -10,7 +10,7 @@ import { isValidAddress } from '@/modules/utils/address.ts';
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('0xab5801a7d398351b8be11c439e05c5b3259aec9b');
 
   const handleSubmit = useCallback((e: FormEvent) => {
     e.preventDefault();
